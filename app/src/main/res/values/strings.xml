@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Calculator</string>
+    <string name="test1">99+66+22</string>
+    <string name="test2">97989879895131231856419798987989513123185641979898798951312318564197989879895131231856419798987989513123185641</string>
 </resources>
