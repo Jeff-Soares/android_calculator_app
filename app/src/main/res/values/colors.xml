@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black_night">#1F2125</color>
     <color name="nova_white">#E8EAEE</color>
+    <color name="grey_night">#2D2F33</color>
+    <color name="blue_diamond">#5dbdd3</color>
 </resources>
