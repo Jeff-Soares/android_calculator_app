@@ -2,30 +2,28 @@ package com.jx.calculator.presentation.model
 
 import androidx.databinding.BaseObservable
 import androidx.databinding.ObservableField
+import com.jx.calculator.util.set
 
 data class CalcDisplay(
-    val calc: ObservableField<String> = ObservableField(),
+    val calc: ObservableField<Pair<String, Mode>> = ObservableField(),
     val result: ObservableField<String> = ObservableField()
 ) : BaseObservable() {
 
-    fun setDigit(str: String) {
-        calc.set(str)
-        notifyChange()
+    fun setDigit(d: String) {
+        calc.set(d, Mode.DIGIT)
     }
 
-    fun setResult(r: String) {
-        result.set(r)
-        notifyChange()
+    fun setText(t: String) {
+        calc.set(t, Mode.TEXT)
     }
 
-    fun resetCalc() {
-        calc.set("")
-        notifyChange()
-    }
-
-    fun resetAll() {
-        calc.set("")
+    fun reset() {
+        calc.set("", Mode.RESET)
         result.set("")
-        notifyChange()
     }
+
+    enum class Mode {
+        DIGIT, TEXT, RESET, DONE
+    }
+
 }

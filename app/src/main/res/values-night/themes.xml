@@ -41,16 +41,16 @@
     </style>
 
     <style name="Theme.Display_Calc" parent="Widget.AppCompat.EditText">
-        <item name="android:textSize">52sp</item>
+        <item name="android:textSize">64sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/nova_white</item>
         <item name="android:background">@color/grey_night</item>
     </style>
 
     <style name="Theme.Display_Result" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">44sp</item>
+        <item name="android:textSize">40sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/nova_white</item>
+        <item name="android:textColor">@color/gray</item>
         <item name="android:background">@color/grey_night</item>
     </style>
 
