@@ -111,7 +111,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="0"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{()->viewModel.display.reset()}"
                 android:text="AC" />
 
@@ -123,7 +122,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="^" />
 
@@ -135,7 +133,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="2"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="%" />
 
@@ -147,7 +144,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="3"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="÷" />
 
@@ -159,7 +155,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="0"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="7" />
 
@@ -170,7 +165,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="8" />
 
@@ -181,7 +175,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="2"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="9" />
 
@@ -193,7 +186,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="3"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/left_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="×" />
 
@@ -236,7 +228,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="3"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/left_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="−" />
 
@@ -279,7 +270,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="3"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/left_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="+" />
 
@@ -316,7 +306,7 @@
                 android:background="#5dbdd3"
                 android:foreground="?android:attr/selectableItemBackgroundBorderless"
                 android:text="="
-                android:textColor="@color/black_night" />
+                android:textColor="@color/white" />
 
         </GridLayout>
 

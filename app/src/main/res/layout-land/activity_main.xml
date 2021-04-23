@@ -55,7 +55,6 @@
                         android:paddingHorizontal="16dp"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="@string/test1"
                         android:textAlignment="textEnd" />
                 </HorizontalScrollView>
 
@@ -103,7 +102,7 @@
 
         <GridLayout
             android:id="@+id/scientific_keyboard"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:background="@color/blue_grotto"
             android:columnCount="3"
@@ -140,7 +139,6 @@
                 android:layout_row="0"
                 android:layout_rowWeight="1"
                 android:layout_column="2"
-
                 android:layout_columnWeight="1"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="Tan" />
@@ -261,7 +259,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="0"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{()->viewModel.display.reset()}"
                 android:text="AC" />
 
@@ -273,7 +270,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="^" />
 
@@ -285,7 +281,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="2"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="%" />
 
@@ -297,7 +292,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="3"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="÷" />
 
@@ -309,7 +303,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="0"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="7" />
 
@@ -320,7 +313,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="8" />
 
@@ -331,7 +323,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="2"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/top_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="9" />
 
@@ -343,7 +334,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="3"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/left_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="×" />
 
@@ -386,7 +376,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="3"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/left_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="−" />
 
@@ -429,7 +418,6 @@
                 android:layout_rowWeight="1"
                 android:layout_column="3"
                 android:layout_columnWeight="1"
-                android:foreground="@drawable/left_border"
                 android:onClick="@{viewModel::setDigit}"
                 android:text="+" />
 
