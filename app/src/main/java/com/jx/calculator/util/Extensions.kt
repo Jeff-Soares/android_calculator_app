@@ -1,14 +1,23 @@
 package com.jx.calculator.util
 
+import android.view.View
 import android.view.animation.Animation
 import androidx.databinding.ObservableField
 import com.jx.calculator.presentation.model.CalcDisplay.Mode
+import java.util.*
 
 fun String.replaceOperators() =
     this.replace("÷", "/")
         .replace("×", "*")
         .replace("−", "-")
         .replace(",", ".")
+        .replace("%", "/100*")
+        .replace("³√(\\d+)\\b".toRegex(), "cbrt(\$1)")
+        .replace("√(\\d+)\\b".toRegex(), "sqrt(\$1)")
+        .replace("Log(\\d+)\\b".toRegex(), "log(\$1)")
+        .replace("Log₂(\\d+)\\b".toRegex(), "log2(\$1)")
+        .replace("Log₁₀(\\d+)\\b".toRegex(), "log10(\$1)")
+        .toLowerCase(Locale.ROOT)
 
 fun String.replaceSeparator() =
     this.replace(".", ",")
@@ -28,5 +37,10 @@ fun Animation.doOnAnimationEnd(f: () -> Unit) {
             f.invoke()
         }
     })
+}
+
+fun View.startRipple() {
+    isPressed = true
+    isPressed = false
 }
 

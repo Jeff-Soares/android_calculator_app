@@ -27,9 +27,6 @@ class MainActivityViewModel : ViewModel() {
     }
 
     fun calculate(exp: String) {
-        if (exp.length <= 2) {
-            display.result.set(""); return
-        }
         try {
             val calc = ExpressionBuilder(exp.replaceOperators()).build()
             val result = calc.evaluate().toString().removeTrailingZero()

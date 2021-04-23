@@ -1,5 +1,7 @@
 package com.jx.calculator.ui
 
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.Animation
@@ -10,6 +12,7 @@ import com.jx.calculator.R
 import com.jx.calculator.databinding.ActivityMainBinding
 import com.jx.calculator.presentation.MainActivityViewModel
 import com.jx.calculator.util.doOnAnimationEnd
+import com.jx.calculator.util.startRipple
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         setupDisplay()
         setupBackspaceBtn()
         setupEqualBtn()
+        setupRotateBtn()
     }
 
     private fun setupDisplay() {
@@ -43,17 +47,36 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        binding.btnBackspace.setOnLongClickListener {
+            binding.displayLayout.apply {
+                drawableHotspotChanged(width.toFloat(), height.toFloat())
+                startRipple()
+            }
+            viewModel.display.reset()
+            false
+        }
     }
 
     private fun setupEqualBtn() {
         binding.btnEqual.setOnClickListener {
             val slideUpCalc: Animation = AnimationUtils.loadAnimation(this, R.anim.slide_up)
-            val slideUpResult: Animation = AnimationUtils.loadAnimation(this, R.anim.slide_up)
+            val slideUpResult: Animation =
+                AnimationUtils.loadAnimation(this, R.anim.slide_up_and_scale)
 
             slideUpResult.doOnAnimationEnd(viewModel::setResultOfCalc)
 
             binding.displayResult.startAnimation(slideUpResult)
             binding.displayCalc.startAnimation(slideUpCalc)
+        }
+    }
+
+    private fun setupRotateBtn() {
+        binding.btnRotate.setOnClickListener {
+            requestedOrientation =
+                if (requestedOrientation == Configuration.ORIENTATION_PORTRAIT)
+                    ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                else
+                    ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
     }
 

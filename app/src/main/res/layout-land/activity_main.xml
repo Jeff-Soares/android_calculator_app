@@ -22,59 +22,70 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:foreground="?android:attr/selectableItemBackgroundBorderless"
-            android:orientation="vertical"
+            android:gravity="end"
+            android:orientation="horizontal"
             android:theme="@style/Theme.Display"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <HorizontalScrollView
-                android:id="@+id/calc_scroll"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fillViewport="true"
-                android:scrollbars="none">
+                android:orientation="vertical"
+                android:paddingStart="40dp"
+                tools:ignore="RtlSymmetry">
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/display_calc"
-                    style="@style/Theme.Display_Calc"
-                    bindCalc="@={viewModel.display.calc}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginTop="50dp"
+                <HorizontalScrollView
+                    android:id="@+id/calc_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true"
+                    android:scrollbars="none">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/display_calc"
+                        style="@style/Theme.Display_Calc"
+                        bindCalc="@={viewModel.display.calc}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:paddingHorizontal="16dp"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="@string/test1"
+                        android:textAlignment="textEnd" />
+                </HorizontalScrollView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/display_result"
+                    style="@style/Theme.Display_Result"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical|end"
                     android:lines="1"
-                    android:maxLines="1"
                     android:paddingHorizontal="16dp"
-                    android:scrollHorizontally="true"
-                    android:singleLine="true"
-                    android:textAlignment="textEnd" />
-            </HorizontalScrollView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/display_result"
-                style="@style/Theme.Display_Result"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:gravity="center_vertical|end"
-                android:lines="1"
-                android:paddingHorizontal="16dp"
-                android:text="@={viewModel.display.result}" />
+                    android:text="@={viewModel.display.result}" />
+            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/options"
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:gravity="bottom">
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/btn_rotate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
                     android:paddingHorizontal="24dp"
                     android:paddingVertical="16dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentBottom="true"
-                    android:src="@drawable/btn_rotation"/>
+                    android:src="@drawable/btn_rotation" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/btn_backspace"
@@ -84,21 +95,160 @@
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="end"
                     android:paddingHorizontal="24dp"
-                    android:paddingVertical="16dp"
+                    android:paddingVertical="5dp"
                     android:src="@drawable/btn_backspace" />
 
             </RelativeLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <GridLayout
+            android:id="@+id/scientific_keyboard"
+            android:layout_width="300dp"
+            android:layout_height="0dp"
+            android:background="@color/blue_grotto"
+            android:columnCount="3"
+            android:rowCount="4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/num_keyboard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/display_layout">
+
+            <!-- Row 1 -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:onClick="@{viewModel::setDigit}"
+                android:text="Sin" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:onClick="@{viewModel::setDigit}"
+                android:text="Cos" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="2"
+
+                android:layout_columnWeight="1"
+                android:onClick="@{viewModel::setDigit}"
+                android:text="Tan" />
+
+            <!-- Row 2 -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:onClick="@{viewModel::setDigit}"
+                android:text="π" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:onClick="@{viewModel::setDigit}"
+                android:text="√" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:layout_column="2"
+                android:layout_columnWeight="1"
+                android:onClick="@{viewModel::setDigit}"
+                android:text="³√" />
+
+            <!-- Row 3 -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:onClick="@{viewModel::setDigit}"
+                android:text="Log" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:onClick="@{viewModel::setDigit}"
+                android:text="Log₂" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_rowWeight="1"
+                android:layout_column="2"
+                android:layout_columnWeight="1"
+                android:onClick="@{viewModel::setDigit}"
+                android:text="Log₁₀" />
+
+            <!-- Row 4 -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="3"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:onClick="@{viewModel::setDigit}"
+                android:text="e" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="3"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:onClick="@{viewModel::setDigit}"
+                android:text="(" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="3"
+                android:layout_rowWeight="1"
+                android:layout_column="2"
+                android:layout_columnWeight="1"
+                android:onClick="@{viewModel::setDigit}"
+                android:text=")" />
+
+        </GridLayout>
+
+        <GridLayout
             android:id="@+id/num_keyboard"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:columnCount="4"
             android:rowCount="5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/scientific_keyboard"
             app:layout_constraintTop_toBottomOf="@id/display_layout">
 
             <!-- Row 1 -->
@@ -313,7 +463,7 @@
                 android:layout_column="2"
                 android:layout_columnSpan="2"
                 android:layout_columnWeight="2"
-                android:background="#5dbdd3"
+                android:background="@color/blue_diamond"
                 android:foreground="?android:attr/selectableItemBackgroundBorderless"
                 android:text="="
                 android:textColor="@color/black_night" />
